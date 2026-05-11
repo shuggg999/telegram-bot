@@ -19,8 +19,8 @@ RUN if [ -f environment.yml ]; then \
 COPY src/ /app/src/
 
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
-    CMD python -c "import urllib.request,sys; r=urllib.request.urlopen('http://localhost:8000/api/v1/health',timeout=4); sys.exit(0 if 200<=r.status<300 else 1)" || exit 1
+    CMD /opt/conda/bin/python -c "import urllib.request,sys; r=urllib.request.urlopen('http://localhost:8000/api/v1/health',timeout=4); sys.exit(0 if 200<=r.status<300 else 1)" || exit 1
 
 EXPOSE 8000
 
-CMD ["python", "-m", "src.main"]
+CMD ["/opt/conda/bin/python", "-m", "src.main"]
