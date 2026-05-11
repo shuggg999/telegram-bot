@@ -1,0 +1,35 @@
+# telegram-bot docker-compose
+#
+# Joins the freqtrade-data-service docker network so volume-monitor and other
+# in-cluster producers can reach it via service name `telegram-bot:8000`.
+
+services:
+  telegram-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: telegram-bot
+    restart: unless-stopped
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_PARSE_MODE=${TELEGRAM_PARSE_MODE:-HTML}
+      - TELEGRAM_PROXY_URL=${TELEGRAM_PROXY_URL:-}
+      - TELEGRAM_DEFAULT_CHAT_ID=${TELEGRAM_DEFAULT_CHAT_ID}
+      - CLICKHOUSE_HOST=${CLICKHOUSE_HOST:-clickhouse-db}
+      - CLICKHOUSE_PORT=${CLICKHOUSE_PORT:-9000}
+      - CLICKHOUSE_DATABASE=${CLICKHOUSE_DATABASE:-crypto_data}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    ports:
+      - "8300:8000"          # +300 offset on jarvis convention
+    networks:
+      - data-service-network
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8000/api/v1/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+networks:
+  data-service-network:
+    external: true
+    name: freqtrade-data-service_default
