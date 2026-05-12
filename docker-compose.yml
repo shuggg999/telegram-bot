@@ -20,7 +20,7 @@ services:
       - CLICKHOUSE_DATABASE=${CLICKHOUSE_DATABASE:-crypto_data}
       - LOG_LEVEL=${LOG_LEVEL:-INFO}
     ports:
-      - "8300:8000"          # +300 offset on jarvis convention
+      - "8300:8000"          # +300 offset on host port to avoid clashes
     networks:
       - data-service-network
     healthcheck:
