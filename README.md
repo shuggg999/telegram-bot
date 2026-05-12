@@ -67,7 +67,7 @@ Centralizing makes the token a single secret, coordinates rate-limit budgets acr
 ### Run
 
 ```bash
-git clone https://github.com/your-org/telegram-bot.git
+git clone https://github.com/shuggg999/telegram-bot.git
 cd telegram-bot
 cp .env.example .env
 # REQUIRED: set TELEGRAM_BOT_TOKEN and TELEGRAM_DEFAULT_CHAT_ID
@@ -188,8 +188,8 @@ To run locally without docker, point `CLICKHOUSE_HOST=localhost` and ensure your
 
 ## Sibling Services
 
-- [freqtrade-data-service](https://github.com/your-org/freqtrade-data-service) — upstream data plane
-- [volume-monitor](https://github.com/your-org/volume-monitor) — example producer (volume anomaly alerts)
+- [freqtrade-data-service](https://github.com/shuggg999/freqtrade-data-service) — upstream data plane
+- [volume-monitor](https://github.com/shuggg999/volume-monitor) — example producer (volume anomaly alerts)
 
 ---
 
