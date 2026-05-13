@@ -125,7 +125,7 @@ The full transition (POST received → Telegram acked) produces 1+attempts rows;
 }
 ```
 
-Verdict ladder (same as data-service & volume-monitor):
+Verdict ladder (same as candleforge & volume-monitor):
 - All ok → 200 `healthy`
 - Any degraded → 200 `degraded`
 - Any failed → 503 `unhealthy`

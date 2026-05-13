@@ -1,6 +1,6 @@
 ## Why
 
-Brand-new repo. Reason it exists: the architecture brainstorming on 2026-05-12 (see `candleforge/docs/superpowers/specs/2026-05-12-data-service-split-architecture-design.md`) extracted Telegram delivery out of `candleforge` into its own service so that:
+Brand-new repo. Reason it exists: the architecture brainstorming on 2026-05-12 (see `candleforge/docs/superpowers/specs/2026-05-12-candleforge-split-architecture-design.md`) extracted Telegram delivery out of `candleforge` into its own service so that:
 
 1. Future alert producers (multiple monitor services, strategy alerts, system health alerts) can share a single Telegram bot token + rate-limiting envelope
 2. Telegram API outages do not cascade into producer services
@@ -56,9 +56,9 @@ telegram-bot/
 - `pydantic-settings`
 - `loguru`
 
-### Soft dep on data-service
+### Soft dep on candleforge
 
-The ClickHouse `telegram_audit` table SHALL be created via a migration script committed to `candleforge/scripts/migrations/` (since data-service owns DB schema). Schema:
+The ClickHouse `telegram_audit` table SHALL be created via a migration script committed to `candleforge/scripts/migrations/` (since candleforge owns DB schema). Schema:
 
 ```sql
 CREATE TABLE IF NOT EXISTS crypto_data.telegram_audit (

@@ -111,7 +111,7 @@ For every delivery attempt the service SHALL INSERT one row into `crypto_data.te
 
 ### Requirement: Health Endpoint Conventions
 
-The service SHALL expose `GET /api/v1/health` with the same conventions as data-service and volume-monitor:
+The service SHALL expose `GET /api/v1/health` with the same conventions as candleforge and volume-monitor:
 
 - Body shape: `{status: "healthy" | "degraded" | "unhealthy", details: {running, telegram_api, clickhouse_audit, chat_rate_limiter}}`
 - HTTP status: 200 for healthy + degraded, 503 for unhealthy
