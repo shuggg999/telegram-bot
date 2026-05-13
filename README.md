@@ -62,7 +62,7 @@ Centralizing makes the token a single secret, coordinates rate-limit budgets acr
 - The numeric `chat_id` to send to (DM your bot, then `GET https://api.telegram.org/bot<TOKEN>/getUpdates`)
 - Optional: a SOCKS5 proxy if `api.telegram.org` is blocked from your network
 - Docker & Docker Compose
-- A reachable ClickHouse (for audit log; can share the one from freqtrade-data-service)
+- A reachable ClickHouse (for audit log; can share the one from candleforge)
 
 ### Run
 
@@ -74,7 +74,7 @@ cp .env.example .env
 docker compose up -d
 ```
 
-By default `docker-compose.yml` joins external network `freqtrade-data-service_default` so `clickhouse-db:9000` resolves. Override if your ClickHouse lives elsewhere.
+By default `docker-compose.yml` joins external network `candleforge_default` so `clickhouse-db:9000` resolves. Override if your ClickHouse lives elsewhere.
 
 ### Verify
 
@@ -188,7 +188,7 @@ To run locally without docker, point `CLICKHOUSE_HOST=localhost` and ensure your
 
 ## Sibling Services
 
-- [freqtrade-data-service](https://github.com/shuggg999/freqtrade-data-service) — upstream data plane
+- [candleforge](https://github.com/shuggg999/candleforge) — upstream data plane
 - [volume-monitor](https://github.com/shuggg999/volume-monitor) — example producer (volume anomaly alerts)
 
 ---

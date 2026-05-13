@@ -2,7 +2,7 @@
 
 ## Context
 
-Telegram delivery was previously embedded inside `freqtrade-data-service` as `src/alerts/`. The 2026-05-12 architecture brainstorming extracted it to live in its own repo + process so future producers (other monitors, strategy alerts) can share it without bundling credentials.
+Telegram delivery was previously embedded inside `candleforge` as `src/alerts/`. The 2026-05-12 architecture brainstorming extracted it to live in its own repo + process so future producers (other monitors, strategy alerts) can share it without bundling credentials.
 
 This change brings the repo from empty skeleton to working delivery service. Bot lifetime is decoupled from any single producer.
 

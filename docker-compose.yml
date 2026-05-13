@@ -1,6 +1,6 @@
 # telegram-bot docker-compose
 #
-# Joins the freqtrade-data-service docker network so volume-monitor and other
+# Joins the candleforge docker network so volume-monitor and other
 # in-cluster producers can reach it via service name `telegram-bot:8000`.
 
 services:
@@ -32,4 +32,4 @@ services:
 networks:
   data-service-network:
     external: true
-    name: freqtrade-data-service_default
+    name: candleforge_default

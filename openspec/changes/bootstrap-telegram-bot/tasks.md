@@ -3,7 +3,7 @@
 ## 1. Pre-flight Checks
 
 - [ ] 1.1 Confirm `volume-monitor` bootstrap progress — it doesn't have to be fully implemented but its alert payload schema must be locked (per its `bootstrap-volume-monitor/design.md` Decision 6)
-- [ ] 1.2 Confirm `freqtrade-data-service` is the owner of ClickHouse schema migrations; a migration script for the `telegram_audit` table will live there
+- [ ] 1.2 Confirm `candleforge` is the owner of ClickHouse schema migrations; a migration script for the `telegram_audit` table will live there
 - [ ] 1.3 jarvis port 8300 is free
 - [ ] 1.4 You have a Telegram bot token + chat_id available for test (use the same bot the existing `src/alerts/` module uses in data-service today)
 
@@ -17,7 +17,7 @@
 
 ## 3. ClickHouse Audit Migration (cross-repo coordination)
 
-- [ ] 3.1 In `freqtrade-data-service` repo, write `scripts/migrations/2026-XX-XX-add-telegram-audit-table.sql` containing the `CREATE TABLE crypto_data.telegram_audit ...` DDL (per proposal.md schema)
+- [ ] 3.1 In `candleforge` repo, write `scripts/migrations/2026-XX-XX-add-telegram-audit-table.sql` containing the `CREATE TABLE crypto_data.telegram_audit ...` DDL (per proposal.md schema)
 - [ ] 3.2 Push to data-service gitea, run on jarvis: `docker exec -i clickhouse-db clickhouse-client < scripts/migrations/2026-XX-XX-add-telegram-audit-table.sql`
 - [ ] 3.3 Verify on jarvis: `docker exec clickhouse-db clickhouse-client -q "SHOW CREATE TABLE crypto_data.telegram_audit"` shows expected schema with TTL
 
